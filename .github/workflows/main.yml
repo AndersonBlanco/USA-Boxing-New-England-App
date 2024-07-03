@@ -1,0 +1,49 @@
+name: Build and Upload iOS App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install EAS CLI
+        run: npm install -g eas-cli
+
+      - name: Authenticate with Expo
+        run: eas login --token ${{ secrets.EXPO_TOKEN }}
+
+      - name: Configure EAS
+        run: eas build:configure
+
+      - name: Create iOS Build
+        run: eas build --platform ios --non-interactive --profile production
+
+      - name: Install Fastlane
+        run: sudo gem install fastlane
+
+      - name: Download IPA
+        run: |
+          BUILD_URL=$(eas build:list --status=finished --platform=ios --limit=1 --json | jq -r '.[0].artifacts.buildUrl')
+          curl -o app.ipa "$BUILD_URL"
+
+      - name: Upload to App Store Connect
+        run: fastlane pilot upload --ipa app.ipa
+        env:
+          FASTLANE_USER: ${{ secrets.APPLE_ID }}
+          FASTLANE_PASSWORD: ${{ secrets.APP_SPECIFIC_PASSWORD }}
+          FASTLANE_TEAM_ID: ${{ secrets.TEAM_ID }}
+          FASTLANE_ITC_TEAM_ID: ${{ secrets.ITC_TEAM_ID }}
