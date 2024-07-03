@@ -4,5 +4,11 @@
     "slug": "TestvV2",
     "version": "1.0.0"
   },
-  "name": "TestvV2"
+  "name": "TestvV2",
+  "icon": "./assets/logo.png",
+  "splash":{
+    "image": "./assets/logo.png",
+    "resizeMode": "contain",
+    "backgroundColor": "#29303A"
+  }
 }
