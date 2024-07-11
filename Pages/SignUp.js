@@ -9,10 +9,10 @@ import GoogleLogo from "../assets/google_logo.png";
 import AppleLogo from "../assets/apple_logo.png";
 import ArrowSVG from "../assets/arrowSVG";
 
-const inputForm_from_top_Position = 70; 
+const inputForm_from_top_Position = 40; 
 export default function SignUp({navigation}){
     const SignUpButton = (
-        <TouchableOpacity style = {styles.SignUpButton} onPress={() => navigation.replace("SelectAccType")}>
+        <TouchableOpacity style = {styles.SignUpButton} onPress={() => navigation.replace("RegisterUnderGym")}>
             <Text style = {styles.signUpText}>Select Accout Type  <ArrowSVG/></Text>
         </TouchableOpacity>
      )
@@ -27,7 +27,7 @@ export default function SignUp({navigation}){
      )
     
     const ResetAcc = (
-        <View style = {[styles.signUp, {top: inputForm_from_top_Position * 2.5}]}>
+        <View style = {[styles.signUp, {top: inputForm_from_top_Position * 2.8}]}>
             <Text>Forgot username / password?</Text>
         <TouchableOpacity style = {styles.signUpTextCont}>
             <Text style = {styles.signInText} onPress={() => navigation.replace("Home")}>reset</Text>
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     },
     SignUpButton:{
         backgroundColor:"black",
-        top: inputForm_from_top_Position *1.55,
+        top: inputForm_from_top_Position *1.7,
         width: 250, 
         textAlign:"center",
         alignItems:"center",
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
         fontSize: 15
     },
     signUp:{
-        top: inputForm_from_top_Position *2.9,
+       top: inputForm_from_top_Position *3.52,
         alignItems:"center",
         justifyContent:"flex",
         flexDirection:"row"
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     authPartitionsSection:{
         justifyContent:"flex",
         flexDirection:"row",
-        top: inputForm_from_top_Position *3.1,
+        top: inputForm_from_top_Position *3.4,
         columnGap: 50
     },
     authPartitionsIcons:{

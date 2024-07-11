@@ -8,11 +8,11 @@ import usaBoxingNE_logo from "../assets/icon.png";
 import GoogleLogo from "../assets/google_logo.png";
 import AppleLogo from "../assets/apple_logo.png";
 
- const inputForm_from_top_Position = 100; 
+ const inputForm_from_top_Position = 64; 
 export default function SignIn({navigation}){
 
  const SignInButton = (
-    <TouchableOpacity style = {styles.SignInButton} onPress={() => navigation.replace("Home")}>
+    <TouchableOpacity style = {styles.SignInButton} onPress={() => navigation.replace("RegisterUnderGym")}>
         <Text style = {styles.signInText}>SignIn</Text>
     </TouchableOpacity>
  )
