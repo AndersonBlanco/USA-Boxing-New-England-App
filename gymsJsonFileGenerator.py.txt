@@ -1,0 +1,70 @@
+import json
+import requests 
+
+gyms = [
+    {
+        "name": "Private Jewels Boxing INC",
+        "address": "725 Summer Street Lynn, MA  01905",
+        "contact": {
+            "tel": "781-913-8461",
+            "email": "www.privatejewelsfitness.com"
+        },
+        "owner": {
+            "name": "Alexander Sepulveda",
+            "contact": {
+                "tel": "781-913-9461"
+                }
+        }
+    },
+
+    {
+        "name": "1 More Rep Athletics",
+        "address": "14-16 Partridge Pl Roxbury, MA  02119",
+        "contact": {
+            "tel": None,
+            "email": "https://1mrathletics.com"
+        },
+        "owner": {
+            "name": "Jose Lora",
+            "contact": {
+                "tel": "857-417-7121"
+                }
+        }
+    },
+
+    {
+        "name": "33 BOXING CLUB",
+        "address": "1017 Southbridge st Worcester, MA  01610",
+        "contact": {
+            "tel": "774-502-6766",
+            "email": None
+        },
+        "owner": {
+            "name": "Christian Cuadrado",
+            "contact": {
+                "tel": "774-502-6766"
+                }
+        }
+    },
+
+     {
+        "name": "401 Boxing",
+        "address": "1612 ELMWOOD AVE CRANSTON, RI  02905",
+        "contact": {
+            "tel": None,
+            "email": None
+        },
+        "owner": {
+            "name": None,
+            "contact": {
+                "tel": None
+                }
+        }
+    },
+
+    
+]
+#print(json.dumps(gyms))
+
+res = requests.request("https://usa-boxing-new-england-default-rtdb.firebaseio.com/")
+print(res)

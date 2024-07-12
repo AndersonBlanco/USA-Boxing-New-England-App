@@ -1,0 +1,8 @@
+import { app, database} from "./services/firebase.js";
+import { onValue } from "firebase/database"; 
+
+const gymsRef = ref(database, "gyms/");
+onValue(gymsRef, (snapshot) =>{
+    const data = snapshot.val();
+    console.log(data)
+})

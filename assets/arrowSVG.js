@@ -7,6 +7,7 @@ const ArrowSVG = (props) => (
     height={12}
     viewBox="0 0 15 12"
     fill="none"
+    style = {props.style}
     {...props}
   >
     <Path
