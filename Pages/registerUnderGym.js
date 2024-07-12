@@ -1,4 +1,4 @@
-import { Modal, View, Text, SafeAreaView, Button, Image, StyleSheet, TextInput, TouchableOpacity, TouchableHighll, ImageBackground, FlatList, SectionList, ScrollView} from "react-native"; 
+import { Modal, View, Text, SafeAreaView, Button, Image, StyleSheet, TextInput, TouchableOpacity, TouchableHighll, ImageBackground, FlatList, SectionList, ScrollView, AccessibilityInfo} from "react-native"; 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationActions } from '@react-navigation/native';
@@ -13,7 +13,7 @@ import {ref, onValue, get, child} from "firebase/database"
 import { useState } from "react";
 import ArrowSVG from "../assets/arrowSVG";
 import * as AsyncStorage from "@react-native-async-storage/async-storage";
-
+import parseJson from "parse-json";
 export default function RegisterUnderGym({navigation}){
   const [data, setData] = useState('data'); 
   const [userSelectedGym, setUserSelectedGym] = useState(""); 
@@ -64,7 +64,7 @@ export default function RegisterUnderGym({navigation}){
         data = {data != "data"? JSON.parse(data) : []}
         renderItem={({item}) =>{
             return(
-                <TouchableOpacity style = {styles.listItemCont} onPress = {async ()=>{ await setTriggerModal(!triggerModal); await setUserSelectedGym(JSON.stringify(item))}}>
+                <TouchableOpacity style = {styles.listItemCont} onPress = {async ()=>{ await setTriggerModal(!triggerModal); await setUserSelectedGym((item))}}>
                     <Text style={styles.listItemText}>{item['name']}</Text>
                 </TouchableOpacity>
             )
@@ -73,7 +73,17 @@ export default function RegisterUnderGym({navigation}){
         />
     )
 
+    const CloseModal = (
+        <TouchableOpacity style = {[styles.SignUpButton, {position:"absolute",bottom: 20, left: 61}]} onPress={() => setTriggerModal(false)}>
+        <Text style = {styles.signUpText}>Back</Text>
+    </TouchableOpacity>
+    )
 
+    const AccpetGymCodeInput = (
+        <TouchableOpacity style = {[styles.SignUpButton, {position:"absolute",bottom: 82, left: 61}]} onPress={() => navigation.replace("Home")}>
+        <Text style = {styles.signUpText}>Continue</Text>
+    </TouchableOpacity>
+    )
     return(
         <SafeAreaView>
 
@@ -84,19 +94,39 @@ export default function RegisterUnderGym({navigation}){
             {SearchBar}
             {GymList}
 
-            {ContinueButton}
             {BackButton}
             </View>
 
 
             <Modal
+            transparent
             visible = {triggerModal}
-            style = {styles.modal}
+            animationType="fade"
             >
+                <View
+                style = {{
+                    textAlign:"centere",
+                    alignItems:"center",
+                    justifyContent:"center",
+                   backgroundColor: "rgba(0,0,0, .15)",
+                   height: "100%"
+                }}>
                 <View
                     style={styles.modal}
                 >
-                       <Text>{userSelectedGym != null? userSelectedGym : ""}</Text>
+                    <View style = {styles.gymProfile}>
+                    <Image source = {{uri: userSelectedGym.img}} height={100} width={100} />
+        <Text>{((userSelectedGym)).name}</Text>
+                    </View>
+  
+    
+
+    <TextInput style = {styles.input} placeholder="access code" placeholderTextColor={"rgba(0,0,0,.25)"} />
+
+
+                        {AccpetGymCodeInput}
+                       {CloseModal}
+                </View>               
                 </View>
             </Modal>
         </SafeAreaView>
@@ -175,5 +205,27 @@ const styles = StyleSheet.create({
        textAlign:"center",
        alignItems:"center",
        justifyContent:"center",
+      backgroundColor: "white",
+      height: "50%",
+      width: "90%",
+      borderRadius: 25
+   
+    },
+    input:{
+        color: "rgba(255,255,255)",
+        width: 255,
+        textAlign: "left",
+        borderBottomColor: "black",
+        borderBottomWidth: 1.5,
+        paddingVertical: 5,
+        paddingHorizontal: 5,
+        fontSize: 15,
+        bottom: 50,
+        textAlign:"center"
+    },
+    gymProfile:{
+        top: -100, 
+        alignItems:"center",
+        rowGap:25
     }
 })
