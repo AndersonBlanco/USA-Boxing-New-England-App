@@ -14,6 +14,7 @@ import { useState } from "react";
 import ArrowSVG from "../assets/arrowSVG";
 import * as AsyncStorage from "@react-native-async-storage/async-storage";
 import parseJson from "parse-json";
+import MainNav from "../components/mainNavigation";
 export default function RegisterUnderGym({navigation}){
   const [data, setData] = useState('data'); 
   const [userSelectedGym, setUserSelectedGym] = useState(""); 
@@ -80,7 +81,7 @@ export default function RegisterUnderGym({navigation}){
     )
 
     const AccpetGymCodeInput = (
-        <TouchableOpacity style = {[styles.SignUpButton, {position:"absolute",bottom: 82, left: 61}]} onPress={() => navigation.replace("Home")}>
+        <TouchableOpacity style = {[styles.SignUpButton, {position:"absolute",bottom: 82, left: 61}]} onPress={() => navigation.replace("Home", {userSelectedGym: userSelectedGym, schedule: userSelectedGym.generalWeeklySchedule})}>
         <Text style = {styles.signUpText}>Continue</Text>
     </TouchableOpacity>
     )
@@ -96,7 +97,6 @@ export default function RegisterUnderGym({navigation}){
 
             {BackButton}
             </View>
-
 
             <Modal
             transparent
@@ -129,6 +129,8 @@ export default function RegisterUnderGym({navigation}){
                 </View>               
                 </View>
             </Modal>
+
+      
         </SafeAreaView>
     )
 }
