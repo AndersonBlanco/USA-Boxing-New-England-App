@@ -1,3 +1,6 @@
 [{"day": "Monday", "workout": "Lower Body", "time": "4:30 PM - 7:00 PM"}, {"day": "Tuesday", "workout": "Upper Body"√}, {"day": "Wednesday", "workout":"Cardio"√}, {"day": "Thurdsday", "workout":"Technique"√}, {"day": "Friday", "workout": "Sparring"√}]
 
 - in case more lahey burlington (cardioligist are there)ßßß
+- 2x Eliquis
+- 2x Antibiotics (Morning and night with food) 
+- Nurse/doctor - "everything's better woth food"

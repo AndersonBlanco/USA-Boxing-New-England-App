@@ -1,4 +1,4 @@
-import native, {TouchableOpacity, Text, View, Image, ImageBackground, StyleSheet} from "react-native"
+import native, {TouchableOpacity, Text, View, Image, ImageBackground, StyleSheet, Dimensions} from "react-native"
 //navigation icons 
 import CalendarIcon from "../assets/calendarIcon.js";
 import GearIcon from "../assets/gearIcon.js";
@@ -19,18 +19,18 @@ export default function MainNav({navigation, route}){
 const styles = StyleSheet.create({
     cont:{
     borderTopWidth: 1,
-    borderColor: "rgba(0,0,0, 0.25)",
+    borderColor: "rgba(0,0,0, 0.15)",
     width: "100%",
     height:"fit-content",
     backgroundColor:"transparent",
     position:"absolute", 
-    bottom: -410,
+    bottom: -(Dimensions.get("screen").height * .46),
     textAlign:"center",
     alignItems:"center", 
     justifyContent:"flex",
     flexDirection: "row",
     paddingHorizontal: 34,
-    paddingVertical: 20,
+    paddingVertical: 15,
     columnGap: 64
     },
 

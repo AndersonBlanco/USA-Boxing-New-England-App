@@ -15,10 +15,13 @@ import ArrowSVG from "../assets/arrowSVG";
 import * as AsyncStorage from "@react-native-async-storage/async-storage";
 import parseJson from "parse-json";
 import MainNav from "../components/mainNavigation";
+import ExclamationIcon from "../assets/exclamation";
 export default function RegisterUnderGym({navigation}){
   const [data, setData] = useState('data'); 
   const [userSelectedGym, setUserSelectedGym] = useState(""); 
   const [triggerModal, setTriggerModal] = useState(false); 
+  const [userEneteredAccessCode, setUserEneteredAccessCode] = useState(null); 
+  const [userSelectedAccountType, setUserSelectedAccountType] = useState(0); 
 
     const SearchBar = (
         <>
@@ -81,9 +84,39 @@ export default function RegisterUnderGym({navigation}){
     )
 
     const AccpetGymCodeInput = (
-        <TouchableOpacity style = {[styles.SignUpButton, {position:"absolute",bottom: 82, left: 61}]} onPress={() => navigation.replace("Home", {userSelectedGym: userSelectedGym, schedule: userSelectedGym.generalWeeklySchedule})}>
+        <TouchableOpacity style = {[styles.SignUpButton, {position:"absolute",bottom: 82, left: 61}]} onPress={() => {
+            if(userEneteredAccessCode){
+                alert("Coach")
+            }else{
+                alert("Non Coach")
+            }
+            /*
+            (userEneteredAccessCode) == (userSelectedGym.accessKey)?
+            navigation.replace("Home", {userSelectedGym: userSelectedGym, schedule: userSelectedGym.generalWeeklySchedule})
+            :
+            alert("Incorrect access key")
+            /**/
+        }}>
         <Text style = {styles.signUpText}>Continue</Text>
     </TouchableOpacity>
+    );
+
+
+    //client , non-coach Buttons: 0 = none-coach, 1 = coach
+
+    const AccountTypeSelection = (
+        <View style= {{ top: "-23.5%", textAlign:"center", alignItems:"center" }}>
+        <Text style={{color: "rgba(0,0,0, 0.5)", }}>Select Account Type<TouchableOpacity onPress = {() => alert("Account types will dictate the avaliable services to users. Coache and Non-Coach accounts have distinct permissions and features respective to their within the gym roles.")}><ExclamationIcon style = {{height: 20, width: 20, right: -5, bottom: -3}}/></TouchableOpacity></Text>
+        <View style = {{justifyContent:"flex", flexDirection:"row",}}>
+        <TouchableOpacity onPress={() => setUserSelectedAccountType(1)} style={[{ paddingVertical: 10, paddingHorizontal: 20, backgroundColor: userSelectedAccountType? "black" : "white", margin: 10, borderRadius: 10, textAlign:"center", justifyContent:"center", alignItems:"center",borderColor: "black", borderWidth: 2 }]}>
+            <Text style = {{color: userSelectedAccountType? "white" : "black"}}>Coach</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => setUserSelectedAccountType(0)} style={[{ paddingVertical: 10, paddingHorizontal: 10, backgroundColor: userSelectedAccountType? "white" : "black", margin: 10, borderRadius: 10, textAlign:"center", justifyContent:"center", alignItems:"center",borderColor: "black", borderWidth: 2 }]}>
+                <Text style = {{color: userSelectedAccountType? "black" : "white"}}>Non Coach</Text>
+            </TouchableOpacity>
+            </View>
+            </View>
     )
     return(
         <SafeAreaView>
@@ -120,10 +153,10 @@ export default function RegisterUnderGym({navigation}){
                     </View>
   
     
+     {AccountTypeSelection}
+    <TextInput style = {styles.input} placeholder="access code" placeholderTextColor={"rgba(0,0,0,.25)"} onChangeText={(v)=>setUserEneteredAccessCode(v)} />
 
-    <TextInput style = {styles.input} placeholder="access code" placeholderTextColor={"rgba(0,0,0,.25)"} />
-
-
+               
                         {AccpetGymCodeInput}
                        {CloseModal}
                 </View>               
@@ -146,8 +179,9 @@ const styles = StyleSheet.create({
     },  
      topText:{
         color: "rgba(0,0,0, .55)",
-        fontSizee: 7,
-        width: 300,
+        fontSize: 12,
+        width: "fit-content",
+        paddingHorizontal:37,
         marginVertical: 25
     },
     icon:{
@@ -193,7 +227,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         paddingVertical: 10,
         left: 7,
-        marginVertical: 10
+        marginVertical: "10%"
     },
 
     signUpText:{
@@ -202,13 +236,13 @@ const styles = StyleSheet.create({
         
     },
     modal:{
-       paddingVertical: 50,
+       paddingVertical: "10%",
        paddingHorizontal: 25,
        textAlign:"center",
        alignItems:"center",
        justifyContent:"center",
       backgroundColor: "white",
-      height: "50%",
+      height: "70%",
       width: "90%",
       borderRadius: 25
    
@@ -222,12 +256,12 @@ const styles = StyleSheet.create({
         paddingVertical: 5,
         paddingHorizontal: 5,
         fontSize: 15,
-        bottom: 50,
+        bottom: "17%",
         textAlign:"center"
     },
     gymProfile:{
-        top: -100, 
+        top: "-30%", 
         alignItems:"center",
-        rowGap:25
+        rowGap:15
     }
 })
