@@ -2,7 +2,7 @@
   "expo": {
     "name": "USA Boxing New England",
     "slug": "TestvV2",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "extra": {
       "eas": {
         "projectId": "bbfd969f-d41c-4cda-8254-116d7951d158"
@@ -15,7 +15,7 @@
     },
     "splash": {
       "image": "./assets/icon.png",
-      "resizeMode": "native",
+      "resizeMode": "contain",
       "backgroundColor": "white"
     }
   }

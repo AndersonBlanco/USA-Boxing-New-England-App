@@ -85,10 +85,12 @@ export default function RegisterUnderGym({navigation}){
 
     const AccpetGymCodeInput = (
         <TouchableOpacity style = {[styles.SignUpButton, {position:"absolute",bottom: 82, left: 61}]} onPress={() => {
-            if(userEneteredAccessCode){
-                alert("Coach")
+            if(userEneteredAccessCode == userSelectedGym.accessKey){
+                alert(userSelectedAccountType? "Coach" : "Non-Coach")
+                navigation.replace("Home", {userSelectedGym: userSelectedGym, schedule: userSelectedGym.generalWeeklySchedule, routeName: "Home"})
+            
             }else{
-                alert("Non Coach")
+                alert("Incorrect access key")
             }
             /*
             (userEneteredAccessCode) == (userSelectedGym.accessKey)?

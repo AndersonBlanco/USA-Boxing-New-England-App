@@ -49,7 +49,7 @@ export default function Home({navigation, route}){
                    </Modal>
                   
             </View>
-             <MainNav/>
+             <MainNav route={route} navigation={navigation}/>
             </SafeAreaView>
     )
 }

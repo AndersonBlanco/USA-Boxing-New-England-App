@@ -22,4 +22,22 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const database = getDatabase(app);
-export {app, analytics, database}; 
+
+function getFromDatabase(dir){
+  const r = ref(database); 
+
+  get(child(r, "gyms/"))
+  .then(async snapshot =>{
+      let jsonData = snapshot.val(); 
+      if(snapshot.exists()){
+          //console.log(d);
+         // setData(JSON.stringify(jsonData));
+          //console.log(JSON.parse(data))
+      return jsonData; 
+      }else{
+          //console.log("No Val")
+          return "Error"; 
+      }
+  })
+}
+export {app, analytics, database, getFromDatabase}; 
