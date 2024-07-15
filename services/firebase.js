@@ -20,7 +20,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+//const analytics = getAnalytics(app);
 const database = getDatabase(app);
 
 function getFromDatabase(dir){
@@ -40,4 +40,4 @@ function getFromDatabase(dir){
       }
   })
 }
-export {app, analytics, database, getFromDatabase}; 
+export {app, database, getFromDatabase}; 
