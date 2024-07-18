@@ -1,18 +1,20 @@
 {
   "expo": {
     "name": "usa_boxing_new_england",
-    "slug": "usa_boxing_new_england",
-    "version": "1.0.0",
+    "slug": "TestvV2",
+    "version": "1.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anderson913.TestvV2",
+      "icon": "./assets/icon.png"
     },
     "android": {
       "adaptiveIcon": {
@@ -22,6 +24,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "bbfd969f-d41c-4cda-8254-116d7951d158"
+      }
     }
   }
 }
