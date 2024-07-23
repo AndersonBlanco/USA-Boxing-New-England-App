@@ -9,8 +9,8 @@ const Stack = createStackNavigator();
 function SignIn({navigation}){
   return(
     <View>
-      <Text>SignIn</Text>
-      <TouchableOpacity><Button title='SignUp'/></TouchableOpacity>
+      <Text>SigIn</Text>
+      <Button onPress={()=>navigation.replace("SignUp")} title='SignUp'/> 
     </View>
   )
 }
@@ -19,7 +19,7 @@ function SignUp({navigation}){
   return(
     <View>
       <Text>SignUp</Text>
-      <TouchableOpacity><Button title='SignIn'/></TouchableOpacity>
+     <Button onPress={() => navigation.replace("SignUp")} title='SignIn'/>
     </View>
   )
 }
