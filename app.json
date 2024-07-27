@@ -8,15 +8,18 @@
         "projectId": "bbfd969f-d41c-4cda-8254-116d7951d158"
       }
     },
-    "icon": "./assets/icon.png",  
+    "icon": "./assets/icon.png",
     "ios": {
       "bundleIdentifier": "com.anderson913.TestvV2",
-      "icon": "./assets/icon.png" 
+      "icon": "./assets/icon.png"
     },
     "splash": {
       "image": "./assets/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "white"
+    },
+    "android": {
+      "package": "com.anderson913.TestvV2"
     }
   }
 }

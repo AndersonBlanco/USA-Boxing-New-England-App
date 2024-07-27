@@ -83,13 +83,13 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.app"
+    namespace 'com.anderson913.TestvV2'
     defaultConfig {
-        applicationId "com.app"
+        applicationId 'com.anderson913.TestvV2'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "1.0"
+        versionName "1.1.8"
     }
     signingConfigs {
         debug {
