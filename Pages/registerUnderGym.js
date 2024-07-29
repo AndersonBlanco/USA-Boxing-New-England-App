@@ -1,22 +1,13 @@
 import { Modal, View, Text, SafeAreaView, Button, Image, StyleSheet, TextInput, TouchableOpacity, TouchableHighll, ImageBackground, FlatList, SectionList, ScrollView, AccessibilityInfo} from "react-native"; 
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationActions } from '@react-navigation/native';
-
-import usaBoxingNE_icon from "../assets/icon.png"; 
-import DumbellSVG from "../assets/DumbellSVG";
 import IconSVG from "../assets/icon_svg";
 import MagnifyingGlassnent
  from "../assets/magnifying_glass_svg";
-import {app, analytics, database} from "../services/firebase";
-import {ref, onValue, get, child} from "firebase/database"
+import {database} from "../services/firebase";
+import {ref, get, child} from "firebase/database"
 import { useState } from "react";
-import ArrowSVG from "../assets/arrowSVG";
-import * as AsyncStorage from "@react-native-async-storage/async-storage";
-import parseJson from "parse-json";
 import MainNav from "../components/mainNavigation";
 import ExclamationIcon from "../assets/exclamation";
-export default function RegisterUnderGym({navigation}){
+export default function RegisterUnderGym({navigation, resources}){
   const [data, setData] = useState('data'); 
   const [userSelectedGym, setUserSelectedGym] = useState(""); 
   const [triggerModal, setTriggerModal] = useState(false); 
@@ -31,7 +22,7 @@ export default function RegisterUnderGym({navigation}){
        
     );
 
-    const GetGymsData = () =>{
+    const GetGymsData = () =>{ //api fetch all gyms from cloud database
         const r = ref(database); 
 
         get(child(r, "gyms/"))
@@ -50,19 +41,19 @@ export default function RegisterUnderGym({navigation}){
     GetGymsData();
 
     const ContinueButton = (
-        <TouchableOpacity style = {styles.SignUpButton} onPress={() => navigation.replace("Home")}>
+        <TouchableOpacity style = {styles.SignUpButton} onPress={() => navigation("Home", {...resources, userSelectedGym: userSelectedGym})}>
             <Text style = {styles.signUpText}>Continue</Text>
         </TouchableOpacity>
     );
 
 
-    const BackButton = (
-        <TouchableOpacity style = {styles.SignUpButton} onPress={() => navigation.replace("SignIn")}>
+    const BackButton = ( 
+        <TouchableOpacity style = {styles.SignUpButton} onPress={() => navigation("SignIn")}>
             <Text style = {styles.signUpText}>Back</Text>
         </TouchableOpacity>
     );
 
-    const GymList = (
+    const GymList = ( //list all gym names in list selection, below search bar 
         <FlatList
         style = {styles.flatList}
         data = {data != "data"? JSON.parse(data) : []}
@@ -83,11 +74,11 @@ export default function RegisterUnderGym({navigation}){
     </TouchableOpacity>
     )
 
-    const AccpetGymCodeInput = (
+    const AccpetGymCodeInput = ( //handle user eenetered gym access code verification 
         <TouchableOpacity style = {[styles.SignUpButton, {position:"absolute",bottom: 82, left: 61}]} onPress={() => {
             if(userEneteredAccessCode == userSelectedGym.accessKey){
                 alert(userSelectedAccountType? "Coach" : "Non-Coach")
-                navigation.replace("Home", {userSelectedGym: userSelectedGym, schedule: userSelectedGym.generalWeeklySchedule, routeName: "Home"})
+                navigation("Home", {...resources, userSelectedGym: userSelectedGym})
             
             }else{
                 alert("Incorrect access key")

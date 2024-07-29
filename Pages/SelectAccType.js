@@ -53,13 +53,13 @@ export default function SelectAccType({navigation}){
     //buttons - START
 
     const NextButton = (
-        <TouchableOpacity style={styles.button} onPress = {() => navigation.replace("Home")}>
+        <TouchableOpacity style={styles.button} onPress = {() => navigation("Home")}>
             <Text style={styles.button_text}>Next</Text>
         </TouchableOpacity>
     )
 
     const BackButton = (
-        <TouchableOpacity style={styles.button} onPress={()=> navigation.replace("SignIn")}>
+        <TouchableOpacity style={styles.button} onPress={()=> navigation("SignIn")}>
             <Text style={styles.button_text}>Back</Text>
         </TouchableOpacity>
     )

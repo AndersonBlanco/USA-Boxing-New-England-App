@@ -12,7 +12,7 @@ import ArrowSVG from "../assets/arrowSVG";
 const inputForm_from_top_Position = 40; 
 export default function SignUp({navigation}){
     const SignUpButton = (
-        <TouchableOpacity style = {styles.SignUpButton} onPress={() => navigation.replace("RegisterUnderGym")}>
+        <TouchableOpacity style = {styles.SignUpButton} onPress={() => navigation("RegisterUnderGym")}>
             <Text style = {styles.signUpText}>Select Accout Type  <ArrowSVG/></Text>
         </TouchableOpacity>
      )
@@ -21,7 +21,7 @@ export default function SignUp({navigation}){
         <View style = {styles.signUp}>
             <Text>Have an account?</Text>
         <TouchableOpacity style = {styles.signUpTextCont}>
-            <Text style = {styles.signInText} onPress={() => navigation.replace("SignIn")}>SignIn</Text>
+            <Text style = {styles.signInText} onPress={() => navigation("SignIn")}>SignIn</Text>
         </TouchableOpacity>
         </View>
      )
@@ -30,7 +30,7 @@ export default function SignUp({navigation}){
         <View style = {[styles.signUp, {top: inputForm_from_top_Position * 2.8}]}>
             <Text>Forgot username / password?</Text>
         <TouchableOpacity style = {styles.signUpTextCont}>
-            <Text style = {styles.signInText} onPress={() => navigation.replace("Home")}>reset</Text>
+            <Text style = {styles.signInText} onPress={() => navigation("SignUp")}>reset</Text>
         </TouchableOpacity>
         </View>
     

@@ -12,7 +12,7 @@ import AppleLogo from "../assets/apple_logo.png";
 export default function SignIn({navigation}){
 
  const SignInButton = (
-    <TouchableOpacity style = {styles.SignInButton} onPress={() => navigation.replace("RegisterUnderGym")}>
+    <TouchableOpacity style = {styles.SignInButton} onPress={() => navigation("RegisterUnderGym")}>
         <Text style = {styles.signInText}>SignIn</Text>
     </TouchableOpacity>
  )
@@ -21,7 +21,7 @@ export default function SignIn({navigation}){
     <View style = {styles.signUp}>
         <Text>Don't jave an account?</Text>
     <TouchableOpacity style = {styles.signUpTextCont}>
-        <Text style = {styles.signUpText} onPress={() => navigation.replace("SignUp")}>SignUp</Text>
+        <Text style = {styles.signUpText} onPress={() => navigation("SignUp")}>SignUp</Text>
     </TouchableOpacity>
     </View>
  )
@@ -30,7 +30,7 @@ const ResetAcc = (
     <View style = {[styles.signUp, {top: inputForm_from_top_Position *2.27,}]}>
         <Text>Forgot username / password?</Text>
     <TouchableOpacity style = {styles.signUpTextCont}>
-        <Text style = {styles.signUpText} onPress={() => navigation.replace("Home")}>reset</Text>
+        <Text style = {styles.signUpText} onPress={() => navigation("SignUp")}>reset</Text>
     </TouchableOpacity>
     </View>
 

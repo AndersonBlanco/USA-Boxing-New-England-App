@@ -1,8 +1,8 @@
 import * as React from "react";
 import {View, Text, SafeAreaView, Image, StyleSheet, FlatList, TouchableOpacity, Modal} from "react-native"; 
 import MainNav from "../components/mainNavigation";
-export default function Home({navigation, route}){
-    const {userSelectedGym, schedule} = route.params;
+export default function Home({navigation, resources, currentScreen}){
+    const {userSelectedGym} = resources;
     const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
     const [triggerModal, setTriggerModal] = React.useState(false);    
   
@@ -11,7 +11,7 @@ export default function Home({navigation, route}){
         scrollEnabled = {false}
         
         style = {styles.scheduleList}
-        data = {userSelectedGym.generalWeeklySchedule}
+        data = {resources.userSelectedGym.generalWeeklySchedule}
         renderItem={({item}) =>{
         
             return(
@@ -24,12 +24,8 @@ export default function Home({navigation, route}){
         />
     )
     return(
-        <SafeAreaView>
+   
             <View style = {styles.cont}>
-                <View style = {styles.header}>
-                    <Image source={{uri: userSelectedGym.img}} style = {styles.gymLogo}/>
-                </View>
-              
                    
                     <Text>This week's schedule</Text>
                     
@@ -49,8 +45,7 @@ export default function Home({navigation, route}){
                    </Modal>
                   
             </View>
-             <MainNav route={route} navigation={navigation}/>
-            </SafeAreaView>
+          
     )
 }
 
