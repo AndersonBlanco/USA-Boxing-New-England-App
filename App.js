@@ -41,9 +41,9 @@ export default function App() {
       :
       currentScreen == 'Home'? <><CommonHeader/><Home navigation={navigate} resources = {screenResources} currentScreen = {currentScreen}/><MainNav navigation={navigate} routeName={currentScreen}/></>
       :
-      currentScreen == "Settings"? <><CommonHeader/><SettingsPage/><MainNav navigation={navigate} routeName={currentScreen} extraStyle = {{bottom: -(Dimensions.get("screen").height * .417)}}/></>
+      currentScreen == "Settings"? <><CommonHeader/><SettingsPage/><MainNav navigation={navigate} routeName={currentScreen} extraStyle = {{bottom: -(Dimensions.get("screen").height * .418)}}/></>
       :
-      currentScreen=='Profile'? <><CommonHeader/><Profile/><MainNav navigation={navigate} routeName={currentScreen} extraStyle = {{bottom: -(Dimensions.get("screen").height * .842)}}/></>
+      currentScreen=='Profile'? <><CommonHeader/><Profile/><MainNav navigation={navigate} routeName={currentScreen} extraStyle = {{bottom: -(Dimensions.get("screen").height * .27)}}/></>
       :
       <SignIn navigation={navigate}/>
     }
