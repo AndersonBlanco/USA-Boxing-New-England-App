@@ -5,6 +5,7 @@ import UserLoc from "../assets/userLoc";
 import CellIcon from "../assets/cell";
 import EmailIcon from "../assets/email";
 import { useState } from "react";
+import ExclamationIcon  from "../assets/exclamation";
 //user object schema:
 /*
 {
@@ -19,7 +20,7 @@ class: ...
 */ 
 
 export default function Profile(){
-    const [usrProfileEditModal, setUsrProfileEditModal] = useState(true); 
+    const [usrProfileEditModal, setUsrProfileEditModal] = useState(false); 
     const pseudoUserProfileOBJ = {
         name: "Mario Vargas",
         address: "120 Verona st Lynn MA",
@@ -30,14 +31,21 @@ export default function Profile(){
         class: "Group class"
     };
 
-    const DoneButton = (
-        <TouchableOpacity style={styles.doneButton} onPress={() => setUsrProfileEditModal(false)}><Text style={styles.doneButtonText}>Done</Text></TouchableOpacity>
+    const ProfileImage = (
+        <View style = {styles.profileImgCont}><HeadshotIcon style = {styles.headshotPlaceholder}/></View>
+    )
+
+    const SaveButton = (
+        <TouchableOpacity style={styles.doneButton} onPress={() => setUsrProfileEditModal(false)}><Text style={[styles.doneButtonText, { right: "-84%", backgroundColor: "transparent", alignItems:"center", textAlign:"center", width: 45}]}>Save</Text></TouchableOpacity>
+    )
+    const CancelButton = (
+        <TouchableOpacity style={[styles.doneButton,{left: 15, backgroundColor:"transparent", width:65, textAlign:"center"}]} onPress={() => setUsrProfileEditModal(false)}><Text style={[styles.doneButtonText, {color: "red"}]}>Cancel</Text></TouchableOpacity>
     )
     return(
         <View style = {styles.cont}>
         
             <View style = {{display:"flex", flexDirection: "column", rowGap: 20}}>
-            <View style = {styles.profileImgCont}><HeadshotIcon style = {styles.headshotPlaceholder}/></View>
+           {ProfileImage}
             <TouchableOpacity style={styles.editIcon} onPress={()=>setUsrProfileEditModal(true)}><EditSVG style = {{height: 43, width: 43}}/></TouchableOpacity>
             <Text>{pseudoUserProfileOBJ.name}</Text>
             </View>
@@ -58,14 +66,17 @@ export default function Profile(){
             <SafeAreaView style = {styles.modalContOuter}>
                 
                 <View style = {styles.modalContInner}>
-                    <View style={{backgroundColor: "transparent", width: "100%", paddingVertical: 10}}>{DoneButton}</View>
+                    <Text style = {styles.title}>My info</Text>
+                    <View style={{top: -25}}>{ProfileImage}<TouchableOpacity onPress={()=>alert("Click your profile image to select a new one")} style={{right: -10, position: "absolute", top: -40}}><ExclamationIcon style={{height:25, width: 25}} /></TouchableOpacity></View>
+                    <View style={{backgroundColor: "transparent", width: "100%", paddingVertical: 10, position:"absolute", top: 0}}>{CancelButton}</View>
+                    <View style={{backgroundColor: "transparent", width: "100%", paddingVertical: 10, position:"absolute", top: 0}}>{SaveButton}</View>
                     <View style = {styles.infoBlock}>
-                    <TextInput inputField value={pseudoUserProfileOBJ.name}/>
+                    <TextInput style= {styles.inputField} value={pseudoUserProfileOBJ.name}/>
                     <TextInput style = {styles.inputField} value={pseudoUserProfileOBJ.address}/>
                     <TextInput style = {styles.inputField} value={pseudoUserProfileOBJ.tel}/>
                     <TextInput style = {styles.inputField} value={pseudoUserProfileOBJ.email}/>
-                    <TextInput style = {styles.inputField} value={pseudoUserProfileOBJ.age}/>
-                    <TextInput style = {styles.inputField} value={pseudoUserProfileOBJ.weight}/>
+                    <TextInput style = {styles.inputField} value={`${pseudoUserProfileOBJ.age} yrs`}/>
+                    <TextInput style = {styles.inputField} value={`${pseudoUserProfileOBJ.weight} lbs`}/>
                     </View>
                 </View>
             </SafeAreaView>
@@ -150,7 +161,7 @@ const styles = StyleSheet.create({
         alignItems:"center",
         textAlign:"center",
         display:"flex",
-        justifyContent:"flex-start",
+        justifyContent:"center",
         flexDirection:"column",
         rowGap: 15,
        verticalAlign:"center",
@@ -160,11 +171,13 @@ const styles = StyleSheet.create({
             borderColor: "black",
             borderBottomWidth: 1,
             display:"flex",
-            justifyContent:""
+            justifyContent:"flex-end",
+            textAlign:"left",
+            paddingLeft: 34
         },
         doneButton:{
             position:"relative",
-           right: "-84%"
+       
         
         },
         doneButtonText:{
@@ -179,7 +192,13 @@ const styles = StyleSheet.create({
             justifyContent:"flex-start",
             display:"flex",
             flexDirection:"column",
-            rowGap: 25
+            rowGap: 25,
+            
+        },
+        title:{
+            top: -25,
+            fontSize: 15,
+
         }
 
 })
