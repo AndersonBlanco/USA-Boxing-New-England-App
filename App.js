@@ -40,7 +40,7 @@ export default function App() {
       :
       currentScreen== 'RegisterUnderGym'? <RegisterUnderGym navigation={navigate} resources = {screenResources}/>
       :
-      currentScreen == 'Home'? <><CommonHeader/><Home navigation={navigate} resources = {screenResources} currentScreen = {currentScreen}/><MainNav navigation={navigate} routeName={currentScreen}/></>
+      currentScreen == 'Home'? <><CommonHeader/><Home navigation={navigate} resources = {screenResources} currentScreen = {currentScreen}/><MainNav extraStyle = {{bottom: -(Dimensions.get("screen").height * .129)}} navigation={navigate} routeName={currentScreen}/></>
       :
       currentScreen == "Settings"? <><CommonHeader/><SettingsPage navigation={navigate}/><MainNav navigation={navigate} routeName={currentScreen} extraStyle = {{bottom: -(Dimensions.get("screen").height * .418)}}/></>
       :

@@ -1,6 +1,8 @@
 import * as React from "react";
-import {View, Text, SafeAreaView, Image, StyleSheet, FlatList, TouchableOpacity, Modal} from "react-native"; 
+import {View, Text, SafeAreaView, Image, StyleSheet, FlatList, TouchableOpacity, Modal, ImageBackground, ScrollView} from "react-native"; 
 import MainNav from "../components/mainNavigation";
+import PunchTrackerBackImg from "../assets/punchTrackerBackImg.png";
+
 export default function Home({navigation, resources, currentScreen}){
     const {userSelectedGym} = resources;
     const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
@@ -22,14 +24,32 @@ export default function Home({navigation, resources, currentScreen}){
             )
         }}
         />
+    );
+
+    const Services = (
+        <View style = {styles.services}>
+        <TouchableOpacity style={styles.ImageBackgroundCont}>
+        <ImageBackground blurRadius={1} resizeMode="cover" source={PunchTrackerBackImg} style={styles.ImageBackground}><Text style = {styles.ImageBackgroundText}>Punch Tracker</Text></ImageBackground>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.ImageBackgroundCont}>
+            <ImageBackground blurRadius={1} resizeMode="cover" source={PunchTrackerBackImg} style={styles.ImageBackground}><Text style = {styles.ImageBackgroundText}>Punch Tracker</Text></ImageBackground>
+        </TouchableOpacity>
+
+        </View>
     )
     return(
    
             <View style = {styles.cont}>
+                <ScrollView horizontal={false} scrollEnabled style={styles.scrollView} centerContent={true}>
                    
                     <Text>This week's schedule</Text>
                     
                    {WeeklyScheduleList}
+                   
+                   {Services}
+
+
                    <Modal
                    visible={triggerModal}
                    style = {styles.modal}
@@ -43,19 +63,27 @@ export default function Home({navigation, resources, currentScreen}){
 
 
                    </Modal>
-                  
+                  </ScrollView>
             </View>
           
     )
 }
 
 const styles = StyleSheet.create({
+    scrollView:{
+       
+    
+    },
+
     cont:{
         backgroundColor: "transparent",
         textAlign:"center",
         alignItems:"center",
         justifyContent:"center",
-        paddingTop: 50
+        paddingTop: 50,
+        height:"100%",
+        width:"100%",
+        
     },
 
     header:{
@@ -115,5 +143,39 @@ const styles = StyleSheet.create({
         justifyContent:"center",
         borderRadius: 10,
 
-    }
+    },
+
+    services:{
+        display:"flex",
+        flexDirection:"column",
+        rowGap:25,
+        paddingVertical: 25
+    },
+    ImageBackgroundCont:{
+        backgroundColor: "blue",
+        alignItems:"center",
+        textAlign:"center",
+        justifyContent:"center",
+        display:"{flex", 
+        padding: 0,
+        width: "90%",
+        borderRadius: 10,
+        overflow:"hidden",
+        
+
+    },
+    ImageBackground:{
+        width: 390, 
+        height: 115,
+         borderRadius: 10,
+         textAlign:"center",
+         alignItems:"center",
+        
+
+        },
+        ImageBackgroundText:{
+            color: "white",
+            top: 45,
+            fontWeight:"500"
+        }
 })

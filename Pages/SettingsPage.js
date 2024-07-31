@@ -8,7 +8,7 @@ export default function SettingsPage({navigation}){
         <TouchableOpacity style = {styles.pressable}><Text style = {styles.pressablmeTex}>Terms & Services</Text><GArrow style ={styles.gArrow} fill="#5C5C5C"/></TouchableOpacity>
         <TouchableOpacity style = {styles.pressable}><Text style = {styles.pressablmeTex}>Software Details</Text><GArrow style ={styles.gArrow} fill="#5C5C5C"/></TouchableOpacity>
         <View style = {styles.account} id = "account">
-        <TouchableOpacity onPress={()=>navigation("SignIn")} style = {[styles.pressable,  {borderTopWidth: 0}]}><Text style = {[styles.pressablmeTex, {color: "red"}]}>Sign Out</Text><GArrow style ={[styles.gArrow]} fill = "red"/></TouchableOpacity>
+        <TouchableOpacity onPress={()=>Alert.prompt("Sign Out", "are you sure you want to sign out?", [{text: "No"}, {text:"Yes", onPress: ()=>navigation("") }])} style = {[styles.pressable,  {borderTopWidth: 0}]}><Text style = {[styles.pressablmeTex, {color: "red"}]}>Sign Out</Text><GArrow style ={[styles.gArrow]} fill = "red"/></TouchableOpacity>
         <TouchableOpacity style = {styles.pressable}><Text style = {[styles.pressablmeTex, {color: "red"}]}>Delete Account</Text><GArrow style ={styles.gArrow} fill = "red" /></TouchableOpacity>
         </View>
         </View>
