@@ -1,6 +1,7 @@
 import {View, Text, SafeAreaView, TouchableOpacity, StyleSheet, Alert} from 'react-native';
 import GArrow from '../assets/gArrow';
 export default function SettingsPage({navigation}){
+    //  <TouchableOpacity style = {styles.pressable}><Text style = {[styles.pressablmeTex, {color: "red"}]}>Delete Account</Text><GArrow style ={styles.gArrow} fill = "red" /></TouchableOpacity>
     const Navs = (
         <View style = {styles.navs}>
         <TouchableOpacity style = {styles.pressable}><Text style = {styles.pressablmeTex}>Permissions</Text><GArrow style ={styles.gArrow} fill ="#5C5C5C"/></TouchableOpacity>
@@ -8,8 +9,7 @@ export default function SettingsPage({navigation}){
         <TouchableOpacity style = {styles.pressable}><Text style = {styles.pressablmeTex}>Terms & Services</Text><GArrow style ={styles.gArrow} fill="#5C5C5C"/></TouchableOpacity>
         <TouchableOpacity style = {styles.pressable}><Text style = {styles.pressablmeTex}>Software Details</Text><GArrow style ={styles.gArrow} fill="#5C5C5C"/></TouchableOpacity>
         <View style = {styles.account} id = "account">
-        <TouchableOpacity onPress={()=>Alert.prompt("Sign Out", "are you sure you want to sign out?", [{text: "No"}, {text:"Yes", onPress: ()=>navigation("") }])} style = {[styles.pressable,  {borderTopWidth: 0}]}><Text style = {[styles.pressablmeTex, {color: "red"}]}>Sign Out</Text><GArrow style ={[styles.gArrow]} fill = "red"/></TouchableOpacity>
-        <TouchableOpacity style = {styles.pressable}><Text style = {[styles.pressablmeTex, {color: "red"}]}>Delete Account</Text><GArrow style ={styles.gArrow} fill = "red" /></TouchableOpacity>
+        <TouchableOpacity onPress={()=>Alert.alert("Sign Out", "are you sure you want to sign out?", [{text: "No", style: "cancel"}, {text:"Yes", style:"destructive", onPress: ()=>navigation("") }])} style = {[styles.pressable,  {borderTopWidth: 0}]}><Text style = {[styles.pressablmeTex, {color: "red"}]}>Sign Out</Text><GArrow style ={[styles.gArrow]} fill = "red"/></TouchableOpacity>
         </View>
         </View>
     );
@@ -49,8 +49,7 @@ const styles = StyleSheet.create({
     },
 account:{
     position: "relative",
-    bottom: 0,
     width:"100%",
-    bottom: -270
+    bottom: -340
 }
 })

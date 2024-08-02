@@ -2,7 +2,8 @@ import * as React from "react";
 import {View, Text, SafeAreaView, Image, StyleSheet, FlatList, TouchableOpacity, Modal, ImageBackground, ScrollView} from "react-native"; 
 import MainNav from "../components/mainNavigation";
 import PunchTrackerBackImg from "../assets/punchTrackerBackImg.png";
-
+import RunningTrackerImgBack from "../assets/runningTrackerBackImg.png"
+import NutritionbackImg from "../assets/nutrition.png"; 
 export default function Home({navigation, resources, currentScreen}){
     const {userSelectedGym} = resources;
     const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
@@ -29,10 +30,18 @@ export default function Home({navigation, resources, currentScreen}){
     const Services = (
         <View style = {styles.services}>
         <TouchableOpacity style={styles.ImageBackgroundCont}>
-        <ImageBackground blurRadius={1} resizeMode="cover" source={PunchTrackerBackImg} style={styles.ImageBackground}><Text style = {styles.ImageBackgroundText}>Punch Tracker</Text></ImageBackground>
+        <ImageBackground blurRadius={0} resizeMode="cover" source={PunchTrackerBackImg} style={styles.ImageBackground}><Text style = {styles.ImageBackgroundText}>Punch Tracker</Text></ImageBackground>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.ImageBackgroundCont}>
+            <ImageBackground blurRadius={0} resizeMode="cover" source={RunningTrackerImgBack} style={styles.ImageBackground}><Text style = {styles.ImageBackgroundText}>Punch Tracker</Text></ImageBackground>
+        </TouchableOpacity>
+        
+        <TouchableOpacity style={styles.ImageBackgroundCont}>
+            <ImageBackground blurRadius={0} resizeMode="cover" source={NutritionbackImg} style={styles.ImageBackground}><Text style = {styles.ImageBackgroundText}>Punch Tracker</Text></ImageBackground>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={[styles.ImageBackgroundCont, {opacity: 0}]}>
             <ImageBackground blurRadius={1} resizeMode="cover" source={PunchTrackerBackImg} style={styles.ImageBackground}><Text style = {styles.ImageBackgroundText}>Punch Tracker</Text></ImageBackground>
         </TouchableOpacity>
 
@@ -41,9 +50,9 @@ export default function Home({navigation, resources, currentScreen}){
     return(
    
             <View style = {styles.cont}>
-                <ScrollView horizontal={false} scrollEnabled style={styles.scrollView} centerContent={true}>
-                   
-                    <Text>This week's schedule</Text>
+                <ScrollView horizontal={false} scrollEnabled style={styles.scrollView} scrollToOverflowEnabled={true} contentInsetAdjustmentBehavior="automatic">
+                <View style = {[styles.cont, {paddingVertical: 34,overflow:"hidden", backgroundColor: "transparent" }]}>
+                <Text style = {styles.scheduleTitle}>This week's schedule</Text>
                     
                    {WeeklyScheduleList}
                    
@@ -63,6 +72,7 @@ export default function Home({navigation, resources, currentScreen}){
 
 
                    </Modal>
+                   </View>
                   </ScrollView>
             </View>
           
@@ -71,8 +81,10 @@ export default function Home({navigation, resources, currentScreen}){
 
 const styles = StyleSheet.create({
     scrollView:{
-       
-    
+       textAlign:"center",
+       alignContent:"center",
+       overflow: "hidden",
+       backgroundColor:"transparent"
     },
 
     cont:{
@@ -80,7 +92,6 @@ const styles = StyleSheet.create({
         textAlign:"center",
         alignItems:"center",
         justifyContent:"center",
-        paddingTop: 50,
         height:"100%",
         width:"100%",
         
@@ -152,7 +163,7 @@ const styles = StyleSheet.create({
         paddingVertical: 25
     },
     ImageBackgroundCont:{
-        backgroundColor: "blue",
+        backgroundColor: "transparent",
         alignItems:"center",
         textAlign:"center",
         justifyContent:"center",
@@ -165,7 +176,7 @@ const styles = StyleSheet.create({
 
     },
     ImageBackground:{
-        width: 390, 
+        width: 370, 
         height: 115,
          borderRadius: 10,
          textAlign:"center",
@@ -177,5 +188,14 @@ const styles = StyleSheet.create({
             color: "white",
             top: 45,
             fontWeight:"500"
+        },
+        scheduleTitle:{
+            textAlign:"left",
+            backgroundColor: "transparent",
+            width: "100%",
+            paddingLeft: 20,
+            fontSize: 15,
+            fontWeight: "400", 
+            paddingVertical: 10
         }
 })

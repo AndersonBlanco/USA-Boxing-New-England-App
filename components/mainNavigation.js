@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     borderColor: "rgba(0,0,0, 0.15)",
     width: "100%",
     height:"fit-content",
-    backgroundColor:"transparent",
+    backgroundColor:"white",
     position:"absolute", 
     bottom: -(Dimensions.get("screen").height * .47),
     textAlign:"center",

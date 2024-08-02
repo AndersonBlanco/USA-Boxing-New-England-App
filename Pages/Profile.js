@@ -5,6 +5,8 @@ import UserLoc from "../assets/userLoc";
 import CellIcon from "../assets/cell";
 import EmailIcon from "../assets/email";
 import { useState } from "react";
+import ProfileImgPng from "../assets/client_profile_img.png"
+import ProfileImgPng_2 from "../assets/client_profile_img_1.png"; 
 import ExclamationIcon  from "../assets/exclamation";
 //user object schema:
 /*
@@ -30,9 +32,9 @@ export default function Profile(){
         weight: 100,
         class: "Group class"
     };
-
+//<HeadshotIcon style = {styles.headshotPlaceholder}/>
     const ProfileImage = (
-        <View style = {styles.profileImgCont}><HeadshotIcon style = {styles.headshotPlaceholder}/></View>
+        <View style = {styles.profileImgCont}><Image source={ProfileImgPng_2} style={styles.headshotPlaceholder}/></View>
     )
 
     const SaveButton = (
@@ -62,8 +64,8 @@ export default function Profile(){
                 <View style = {styles.row_t2}><Text>Class: </Text><Text>{pseudoUserProfileOBJ.class}</Text></View>
             </View>
 
-            <Modal visible={usrProfileEditModal} style={styles.modal} transparent={true}>
-            <SafeAreaView style = {styles.modalContOuter}>
+            <Modal visible={usrProfileEditModal} style={styles.modal} transparent={true} animationType="fade">
+            <View style = {styles.modalContOuter}>
                 
                 <View style = {styles.modalContInner}>
                     <Text style = {styles.title}>My info</Text>
@@ -79,7 +81,7 @@ export default function Profile(){
                     <TextInput style = {styles.inputField} value={`${pseudoUserProfileOBJ.weight} lbs`}/>
                     </View>
                 </View>
-            </SafeAreaView>
+            </View>
         </Modal>
 
         </View>
