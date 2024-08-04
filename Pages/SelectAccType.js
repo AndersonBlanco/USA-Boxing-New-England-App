@@ -23,7 +23,7 @@ export default function SelectAccType({navigation}){
 
     function changeAccType(bool){
         set_acc_type_select(bool);
-        console.log(acc_type_select)
+        //console.log(acc_type_select)
     }
     const AthleteType = (
         <TouchableOpacity onPress={() => changeAccType(true)} style = {[styles.gymAccType, {backgroundColor: acc_type_select? "black" : "transparent"}]}>
