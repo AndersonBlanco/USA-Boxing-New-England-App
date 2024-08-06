@@ -3,11 +3,11 @@ import { useState } from 'react';
 import GArrow from '../assets/gArrow';
 import PermissionsSettingPage from './Settings/permissions';
 import FeedbackSettingPage from './Settings/feedback';
-import PrivacySettingPage from './Settings/privacy';
+import SecuritySettingPage from './Settings/security.js';
 import SoftwareDetailsSettingPage from './Settings/software_dets.js';
 import Terms_Conds_SettingPage from './Settings/terms_conds';
 
-export default function SettingsPage({navigation, currentScreen}){
+export default function SettingsPage({navigation, currentScreen, editNavigationStack}){
     //  <TouchableOpacity style = {styles.pressable}><Text style = {[styles.pressablmeTex, {color: "red"}]}>Delete Account</Text><GArrow style ={styles.gArrow} fill = "red" /></TouchableOpacity>
     const [localSettingsCurrentPage, setLocalSettingsCurrentPage] = useState(0);
 
@@ -23,7 +23,7 @@ export default function SettingsPage({navigation, currentScreen}){
     const Navs = (
         <View style = {styles.navs}>
         <TouchableOpacity onPress = {()=> setLocalSettingsCurrentPage(1)} style = {styles.pressable}><Text style = {styles.pressablmeTex}>Permissions</Text><GArrow style ={styles.gArrow} fill ="#5C5C5C"/></TouchableOpacity>
-        <TouchableOpacity onPress = {()=> setLocalSettingsCurrentPage(2)} style = {styles.pressable}><Text style = {styles.pressablmeTex}>Privacy</Text><GArrow style ={styles.gArrow} fill="#5C5C5C"/></TouchableOpacity>
+        <TouchableOpacity onPress = {()=> setLocalSettingsCurrentPage(2)} style = {styles.pressable}><Text style = {styles.pressablmeTex}>Security</Text><GArrow style ={styles.gArrow} fill="#5C5C5C"/></TouchableOpacity>
         <TouchableOpacity onPress = {()=> setLocalSettingsCurrentPage(3)} style = {styles.pressable}><Text style = {styles.pressablmeTex}>Terms & Services</Text><GArrow style ={styles.gArrow} fill="#5C5C5C"/></TouchableOpacity>
         <TouchableOpacity onPress = {()=> setLocalSettingsCurrentPage(4)} style = {styles.pressable}><Text style = {styles.pressablmeTex}>Feedback</Text><GArrow style ={styles.gArrow} fill="#5C5C5C"/></TouchableOpacity>
         <TouchableOpacity onPress = {()=> setLocalSettingsCurrentPage(5)} style = {styles.pressable}><Text style = {styles.pressablmeTex}>Software Details</Text><GArrow style ={styles.gArrow} fill="#5C5C5C"/></TouchableOpacity>
@@ -36,15 +36,15 @@ export default function SettingsPage({navigation, currentScreen}){
     return(
         <>
         {
-            localSettingsCurrentPage == 1? <PermissionsSettingPage /> 
+        localSettingsCurrentPage == 1? <PermissionsSettingPage localNavigaton={setLocalSettingsCurrentPage} /> 
             :
-            localSettingsCurrentPage == 2? <PrivacySettingPage />
+            localSettingsCurrentPage == 2? <SecuritySettingPage localNavigaton={setLocalSettingsCurrentPage}  />
             :
-            localSettingsCurrentPage == 3? <Terms_Conds_SettingPage/>
+            localSettingsCurrentPage == 3? <Terms_Conds_SettingPage localNavigaton={setLocalSettingsCurrentPage} />
             :
-            localSettingsCurrentPage == 4? <FeedbackSettingPage />
+            localSettingsCurrentPage == 4? <FeedbackSettingPage localNavigaton={setLocalSettingsCurrentPage} />
             :
-            localSettingsCurrentPage == 5? <SoftwareDetailsSettingPage />
+            localSettingsCurrentPage == 5? <SoftwareDetailsSettingPage localNavigaton={setLocalSettingsCurrentPage}  />
             : 
             Navs
         }

@@ -17,12 +17,18 @@ import PermissionsSettingPage from "./Pages/Settings/permissions.js";
 export default function App() {
   const [screen, setScreen] = useState(["SignIn"]); //stack infastructure, later will aid in navigating back to previous screen as a record of screen navigations is maintained / recorded
   var currentScreen = screen[screen.length-1]; 
+
   const [screenResources, SetScreenResources] = useState({});
   const [newNotifications, setNewNotifications] = useState(false); 
   function navigate(screenName="SignIn", resources = screenResources){
     setScreen([...screen, screenName]);
-    SetScreenResources(resources)
+    SetScreenResources(resources); 
   };
+  function editNavigationStack(){
+    
+
+    
+  }
   //console.log(screen);
   //<Image source={{uri: screenResources.userSelectedGym.img}} style = {styles.gymLogo}/>
   const NotificationDot = (
@@ -50,7 +56,7 @@ export default function App() {
       :
       currentScreen == 'Home'? <><CommonHeader/><Home navigation={navigate} resources = {screenResources} currentScreen = {currentScreen}/><MainNav extraStyle = {{bottom: (Dimensions.get("screen").height * -.015), paddingBottom: 100}} navigation={navigate} routeName={currentScreen}/></>
       :
-      currentScreen == "Settings"? <><CommonHeader/><SettingsPage currentScreen={currentScreen} navigation={navigate}/><MainNav navigation={navigate} routeName={currentScreen} extraStyle = {{bottom: -(Dimensions.get("screen").height * .419)}}/></>
+      currentScreen == "Settings"? <><CommonHeader/><SettingsPage editNavigationStack ={editNavigationStack} currentScreen={currentScreen} navigation={navigate}/><MainNav navigation={navigate} routeName={currentScreen} extraStyle = {{bottom: -(Dimensions.get("screen").height * .419)}}/></>
       :
       currentScreen=='Profile'? <><CommonHeader/><Profile/><MainNav navigation={navigate} routeName={currentScreen} extraStyle = {{bottom: -(Dimensions.get("screen").height * .279)}}/></>
       :

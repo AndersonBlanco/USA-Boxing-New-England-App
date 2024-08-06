@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import {View, Text, SafeAreaView, TouchableOpacity, StyleSheet, Alert, Switch} from 'react-native';
 import GArrow from '../../assets/gArrow';
-export default function PermissionsSettingPage({navigation, editNavigationStack, localNavigaton}){
-    const [liveLoc_permit, setLiveLoc_permit] = useState(false);
-    const [notifications_permit, setNotificattions_permit] = useState(false);
+export default function SecuritySettingPage({navigation, localNavigaton}){
+    const [_2Auth, set_2Auth] = useState(false);
+
     const BackButton = (
         <TouchableOpacity style = {styles.backButton} onPress={() =>localNavigaton(0)}>
             <View style={{transform:"rotateZ(180deg)", alignItems:"center", justifyContent:"center", height:"fit-content", width:"fit-content"}}>
@@ -12,23 +12,23 @@ export default function PermissionsSettingPage({navigation, editNavigationStack,
                 <Text style ={{fontSize: 15, color: "rgba(0,0,0, .65)"}}>Settings</Text>
         </TouchableOpacity>
     )
-  const SettingOptionComponent = ({title, description, permit, onSwitchToggle}) =>{
-    return(
-         <View style={styles.componentsCont}>
-            <View style = {styles.innerText_and_Button_cont}>
-            <Text style={styles.componentsText}>{title}</Text>
-            <Switch value={permit} onTouchEnd={onSwitchToggle} />
-            </View>
-            <Text>{description}</Text>
-         </View>
-    )
-  }
+
+    const SettingOptionComponent = ({title, description, permit, onSwitchToggle}) =>{
+        return(
+             <View style={styles.componentsCont}>
+                <View style = {styles.innerText_and_Button_cont}>
+                <Text style={styles.componentsText}>{title}</Text>
+                <Switch value={permit} onTouchEnd={onSwitchToggle} />
+                </View>
+                <Text>{description}</Text>
+             </View>
+        )
+      }
     return(
         <View style = {styles.cont}>
             {BackButton}
             <View style = {styles.settingOptions}>
-            <SettingOptionComponent onSwitchToggle = {()=>setLiveLoc_permit(!liveLoc_permit)} permit={liveLoc_permit} title={"Live Location"} description={"Live location tracks the users location with the device’s integrated gps system. This allows the functionality of services like the running tracker"} />
-            <SettingOptionComponent onSwitchToggle = {()=>setNotificattions_permit(!notifications_permit)} permit={notifications_permit} title={"Notifications"} description={"Notifications permissions allows for fast and efficient way of communicating and alerting users of app updates and gym news, events and more!"} />
+            <SettingOptionComponent onSwitchToggle={()=>set_2Auth(!_2Auth)} permit={_2Auth} title = {"20Auth Authentication"} description ={"20Authentication allows the user to maintain higher security than regular. Users will login with a second layer of security, that being the code sent to their phone number or email right after entering login credentials (ie email and password)"}/>
             </View>
         </View>
     )
@@ -38,11 +38,10 @@ const styles = StyleSheet.create({
         alignItems:"center",
         justifyContent:"center",
         textAlign:"center",
-        paddingVertical: 50,
+        paddingVertical: 0,
         backgroundColor: "transparent",
         height: 401,
         paddingHorizontal: 25,
-    
     },
     backButton:{
         display:"flex",
@@ -52,19 +51,20 @@ const styles = StyleSheet.create({
         justifyContent:"flex-start",
         backgroundColor: "transparent",
         left: -140,
-        marginVertical: 50,
-        marginTop: 70
+        marginBottom: 50,
+         top: -30.1
     },
     settingOptions:{
         display:"flex",
         flexDirection:"column",
         rowGap: 50,
+        top: -27
 
     },
     componentsCont:{
         display:"flex",
         flexDirection:"column",
-        rowGap: 15
+        rowGap:20
     },
     innerText_and_Button_cont:{
         display: "flex",

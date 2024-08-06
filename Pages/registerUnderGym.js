@@ -28,6 +28,7 @@ export default function RegisterUnderGym({navigation, resources}){
         get(child(r, "gyms/"))
         .then(async snapshot =>{
             let jsonData = snapshot.val(); 
+
             if(snapshot.exists()){
                 //console.log(d);
                 setData(JSON.stringify(jsonData));
@@ -77,7 +78,7 @@ export default function RegisterUnderGym({navigation, resources}){
     const AccpetGymCodeInput = ( //handle user eenetered gym access code verification 
         <TouchableOpacity style = {[styles.SignUpButton, {position:"absolute",bottom: 82, left: 61}]} onPress={() => {
             if(userEneteredAccessCode == userSelectedGym.accessKey){
-                alert(userSelectedAccountType? "Coach" : "Non-Coach")
+                //alert(userSelectedAccountType? "Coach" : "Non-Coach")
                 navigation("Home", {...resources, userSelectedGym: userSelectedGym})
             
             }else{
