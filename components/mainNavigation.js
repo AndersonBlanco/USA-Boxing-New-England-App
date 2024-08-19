@@ -8,10 +8,10 @@ import HeadshotIcon from "../assets/headshot";
 export default function MainNav({navigation, resources, routeName, extraStyle}){
     return(
         <View style = {[styles.cont, extraStyle]}>
-            <TouchableOpacity onPress={()=>{navigation("Calendar")}} style={[styles.iconDirectCont, {backgroundColor: routeName == "Calendar" ? "rgba(0,0,0,.25)" : "transparent"}]}><CalendarIcon style = {styles.icon}/><Text style = {styles.iconSubText}>Calendar</Text></TouchableOpacity>
-            <TouchableOpacity onPress={()=>{navigation("Home")}} style={[styles.iconDirectCont, {backgroundColor: routeName == "Home" ? "rgba(0,0,0,.25)" : "transparent"}]}><HouseIcon style = {styles.icon}/><Text style = {styles.iconSubText}>Home</Text></TouchableOpacity>
-            <TouchableOpacity onPress={()=>{navigation("Profile")}} style={[styles.iconDirectCont, {backgroundColor: routeName == "Profile" ? "rgba(0,0,0,.25)" : "transparent"}]}><HeadshotIcon style = {styles.icon}/><Text style = {styles.iconSubText}>Profile</Text></TouchableOpacity>
-            <TouchableOpacity onPress={()=>{navigation("Settings")}} style={[styles.iconDirectCont, {backgroundColor: routeName == "Settings" ? "rgba(0,0,0,.25)" : "transparent"}]}><GearIcon style = {styles.icon}/><Text style = {styles.iconSubText}>Settings</Text></TouchableOpacity>
+            <TouchableOpacity onPress={()=>{navigation("Calendar")}} style={[styles.iconDirectCont, {backgroundColor: routeName == "Calendar" ? "rgba(0,0,0,0)" : "transparent"}]}><CalendarIcon fill={routeName == "Calendar"? "rgba(0,0,0,1)" : "transparent"} style = {styles.icon}/><Text style = {styles.iconSubText}>Calendar</Text></TouchableOpacity>
+            <TouchableOpacity onPress={()=>{navigation("Home")}} style={[styles.iconDirectCont, {backgroundColor: routeName == "Home" ? "rgba(0,0,0,0)" : "transparent"}]}><HouseIcon fill={routeName == "Home"? "rgba(0,0,0,1)" : "transparent"} style = {styles.icon}/><Text style = {styles.iconSubText}>Home</Text></TouchableOpacity>
+            <TouchableOpacity onPress={()=>{navigation("Profile")}} style={[styles.iconDirectCont, {backgroundColor: routeName == "Profile" ? "rgba(0,0,0,0)" : "transparent"}]}><HeadshotIcon fill={routeName == "Profile"? "rgba(0,0,0,1)" : "transparent"} style = {styles.icon}/><Text style = {styles.iconSubText}>Profile</Text></TouchableOpacity>
+            <TouchableOpacity onPress={()=>{navigation("Settings")}} style={[styles.iconDirectCont, {backgroundColor: routeName == "Settings" ? "rgba(0,0,0,0)" : "transparent"}]}><GearIcon fill={routeName == "Settings"? "rgba(0,0,0,1)" : "transparent"} style = {styles.icon}/><Text style = {styles.iconSubText}>Settings</Text></TouchableOpacity>
         </View>
     )
 }
@@ -38,7 +38,9 @@ const styles = StyleSheet.create({
     icon:{
         height: 25,
         marginHorizontal: 0,
-        right: -1
+        right: -1,
+         
+        
 
     },
     iconSubText:{
@@ -51,7 +53,8 @@ const styles = StyleSheet.create({
         rowGap: 2,
         borderRadius: "100%",
         paddingHorizontal: 10,
-        paddingVertical: 7,
+        paddingVertical: 10,
+  
         textAlign:"center"
     }
 })

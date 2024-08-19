@@ -14,7 +14,8 @@ export default function CalendarPage(){
     return(
         <View style={styles.cont}>
             <Calendar
-            style = {styles.calendar}
+            theme={{dayTextColor: "black", todayDotColor: "black", arrowColor:"black", todayTextColor: "white", todayBackgroundColor: "black" }}
+            style = {styles.calendar}ß
             />
             {Keys}
         </View>
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
     },
     calendar:{
         backgroundColor: "transparent",
-       
+     
        
         
     },

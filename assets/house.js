@@ -13,7 +13,9 @@ function HouseIcon(props) {
     >
       <Path
         d="M8.533 0L0 6.857h2.133V16H6.4v-4.571h4.266V16h4.266V6.789l2.133.068L8.533 0z"
-        fill="#000"
+        fill={props.fill}
+        stroke={"black"}
+        strokeWidth={1}
       />
     </Svg>
   )
