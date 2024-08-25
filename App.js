@@ -5,9 +5,9 @@ import SelectAccType from './Pages/SelectAccType';
 import RegisterUnderGym from './Pages/registerUnderGym';
 import SettingsPage from "./Pages/SettingsPage";
 import MainNav from "./components/mainNavigation";
-import { StatusBar } from 'expo-status-bar';
+//import { StatusBar } from 'expo-status-bar';
 import React, { useRef, useState } from 'react';
-import { StyleSheet, Text, View, Navigator, SafeAreaView, Image, Modal, FlatList, TouchableOpacity, TouchableOpacityComponent, Animated} from 'react-native';
+import { StyleSheet, Text, View, Navigator, SafeAreaView, Image, Modal, FlatList, TouchableOpacity, TouchableOpacityComponent, Animated, PixelRatio, StatusBar} from 'react-native';
 import { Dimensions } from "react-native";
 import Profile from "./Pages/Profile";
 import ImgIcon from "./assets/icon.png"
@@ -16,6 +16,7 @@ import NotificationsSVG from "./assets/notifications";
 import PermissionsSettingPage from "./Pages/Settings/permissions.js";
 import * as Animatable from "react-native-animatable"; 
 export default function App() {
+  StatusBar.setHidden(false, "fade")
   const [screen, setScreen] = useState(["SignIn"]); //stack infastructure, later will aid in navigating back to previous screen as a record of screen navigations is maintained / recorded
   var currentScreen = screen[screen.length-1]; 
 
@@ -31,7 +32,7 @@ export default function App() {
   }
 
   //notification Panel: 
-  const [notificationData, setNotificationData] = useState([{title: "New Bill"}, {title: "Message from Alex Sep"}]);
+  const [notificationData, setNotificationData] = useState([{title: 'New Bill'}, {title: 'Message from Alex Sep'}]);
 // ?? const V = (<TouchableOpacityComponent></TouchableOpacityComponent>)
   const [notificationPannelToggle, setNotificationPanel] = useState(false); 
   /*animatipn with React Native Animated:   "skewY(-10deg, 10deg)"
@@ -89,8 +90,7 @@ export default function App() {
         padding: 50
        }}
        data = {notificationData}
-       renderItem={({item}) =>{
-        return(
+       renderItem={({item}) =>
         <TouchableOpacity
         style = {{
           borderColor: "gray",
@@ -99,8 +99,7 @@ export default function App() {
           paddingVertical: 25
         }}
         ><Text>{item.title}</Text></TouchableOpacity>
-      )
-       }}
+       }
        />
  </Animatable.View>
     )
@@ -117,10 +116,16 @@ export default function App() {
       <TouchableOpacity style={{ position:"absolute", right: 15, top: 5}} onPress={() => setNotificationPanel(!notificationPannelToggle)}><NotificationsSVG style ={{height: 30,width: 30}}  />{NotificationDot}</TouchableOpacity>
   </View>
     )
-  }
+  };
+
+
   return (
-    <>
-    <SafeAreaView>       
+    <SafeAreaView style={{}}>       
+            {
+        ["Home", "Settings", "Profile", "Calendar"].includes(currentScreen)? <View style = {styles.mainNavContainer}><MainNav navigation={navigate} routeName={currentScreen} extraStyle = {{bottom: (PixelRatio.getPixelSizeForLayoutSize(Dimensions.get("screen").scale) * -2), position: "absolute", paddingVertical: 15}}/></View>
+          :
+          null
+         }
          
     {
       currentScreen=='SignIn'? <SignIn navigation={navigate}/> 
@@ -131,22 +136,22 @@ export default function App() {
       :
       currentScreen== 'RegisterUnderGym'? <RegisterUnderGym navigation={navigate} resources = {screenResources}/>
       :
-      currentScreen == 'Home'? <><CommonHeader/><Home navigation={navigate} resources = {screenResources} currentScreen = {currentScreen}/><MainNav extraStyle = {{bottom: (Dimensions.get("screen").height * -.015), paddingBottom: 100}} navigation={navigate} routeName={currentScreen}/></>
+      currentScreen == 'Home'? <><CommonHeader/><Home navigation={navigate} resources = {screenResources} currentScreen = {currentScreen}/></>
       :
-      currentScreen == "Settings"? <><CommonHeader/><SettingsPage editNavigationStack ={editNavigationStack} currentScreen={currentScreen} navigation={navigate}/><MainNav navigation={navigate} routeName={currentScreen} extraStyle = {{bottom: -(Dimensions.get("screen").height * .419)}}/></>
+      currentScreen == "Settings"? <><CommonHeader/><SettingsPage editNavigationStack ={editNavigationStack} currentScreen={currentScreen} navigation={navigate}/></>
       :
-      currentScreen=='Profile'? <><CommonHeader/><Profile/><MainNav navigation={navigate} routeName={currentScreen} extraStyle = {{bottom: -(Dimensions.get("screen").height * .279)}}/></>
+      currentScreen=='Profile'? <><CommonHeader/><Profile/></>
       :
-      currentScreen == "Calendar"? <><CommonHeader/><CalendarPage/><MainNav navigation={navigate} routeName={currentScreen} extraStyle = {{bottom: -(Dimensions.get("screen").height * .347)}}/></>
+      currentScreen == "Calendar"? <><CommonHeader/><CalendarPage/></>
       :
       <SignIn navigation={navigate}/>
     }
 
          {NotificationPanel}
     </SafeAreaView>
-    </>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -167,5 +172,13 @@ const styles = StyleSheet.create({
     },
     header:{
       backgroundColor: "transparent"
+    },
+    mainNavContainer:{
+      backgroundColor: "green",
+      padding: 0,
+      position:"static",
+      bottom: -Dimensions.get("screen").height * .95,
+      zIndex: 1,
+      
     }
 });

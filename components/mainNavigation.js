@@ -24,15 +24,13 @@ const styles = StyleSheet.create({
     height:"fit-content",
     backgroundColor:"white",
     position:"absolute", 
-    bottom: -(Dimensions.get("screen").height * .47),
     textAlign:"center",
     alignItems:"center", 
     justifyContent:"flex",
     flexDirection: "row",
     paddingHorizontal: 34,
-    paddingVertical: 15,
     columnGap: 40,
-    width: "100%", alignItems:"center", justifyContent:"center", textAlign:"center"
+    width: "100%", alignItems:"center", justifyContent:"center", textAlign:"center",
     },
 
     icon:{
