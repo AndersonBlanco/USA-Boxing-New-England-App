@@ -4,6 +4,9 @@ import MainNav from "../components/mainNavigation";
 import PunchTrackerBackImg from "../assets/punchTrackerBackImg.png";
 import RunningTrackerImgBack from "../assets/runningTrackerBackImg.png"
 import NutritionbackImg from "../assets/nutrition.png"; 
+import Health from "../assets/health.jpeg"; 
+import Education from "../assets/education.jpeg";
+import Icon from "../assets/icon.png"; 
 export default function Home({navigation, resources, currentScreen}){
     const {userSelectedGym} = resources;
     const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
@@ -20,7 +23,7 @@ export default function Home({navigation, resources, currentScreen}){
             return(
                 <TouchableOpacity style = {styles.scheduleItemCont} onPress={() => setTriggerModal(true)}>
                     <Text style = {styles.itemText}>{item.day}</Text>
-                    <Text style = {styles.itemText}>{item.workout}</Text>
+                    <Text style = {styles.itemText}>event</Text>
                     </TouchableOpacity>
             )
         }}
@@ -30,19 +33,19 @@ export default function Home({navigation, resources, currentScreen}){
     const Services = (
         <View style = {styles.services}>
         <TouchableOpacity style={styles.ImageBackgroundCont}>
-        <ImageBackground blurRadius={0} resizeMode="cover" source={PunchTrackerBackImg} style={styles.ImageBackground}><Text style = {styles.ImageBackgroundText}>Punch Tracker</Text></ImageBackground>
+        <ImageBackground blurRadius={0} resizeMode="cover" source={Health} style={styles.ImageBackground}><Text style = {styles.ImageBackgroundText}>Health</Text></ImageBackground>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.ImageBackgroundCont}>
-            <ImageBackground blurRadius={0} resizeMode="cover" source={RunningTrackerImgBack} style={styles.ImageBackground}><Text style = {styles.ImageBackgroundText}>Punch Tracker</Text></ImageBackground>
+            <ImageBackground blurRadius={0} resizeMode="cover" source={NutritionbackImg} style={styles.ImageBackground}><Text style = {styles.ImageBackgroundText}>Nutrition</Text></ImageBackground>
         </TouchableOpacity>
         
         <TouchableOpacity style={styles.ImageBackgroundCont}>
-            <ImageBackground blurRadius={0} resizeMode="cover" source={NutritionbackImg} style={styles.ImageBackground}><Text style = {styles.ImageBackgroundText}>Punch Tracker</Text></ImageBackground>
+            <ImageBackground blurRadius={0} resizeMode="cover" source={Education} style={styles.ImageBackground}><Text style = {styles.ImageBackgroundText}>Education</Text></ImageBackground>
         </TouchableOpacity>
 
         <TouchableOpacity style={[styles.ImageBackgroundCont, {opacity: 0}]}>
-            <ImageBackground blurRadius={1} resizeMode="cover" source={PunchTrackerBackImg} style={styles.ImageBackground}><Text style = {styles.ImageBackgroundText}>Punch Tracker</Text></ImageBackground>
+            <ImageBackground blurRadius={1} resizeMode="cover" source={Icon} style={styles.ImageBackground}><Text style = {styles.ImageBackgroundText}>Finance</Text></ImageBackground>
         </TouchableOpacity>
 
         </View>

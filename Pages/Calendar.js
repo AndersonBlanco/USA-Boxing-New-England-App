@@ -8,7 +8,7 @@ export default function CalendarPage(){
         <View style = {{display:"flex", flexDirection:"row", width:"100%", alignItems:"center", justifyContent:"space-between", paddingVertical: 37.5, paddingHorizontal: 20}}>
             <View style = {styles.row}><View style = {[ styles.keyIcon, {backgroundColor:"cyan"}]}></View><Text style = {styles.keysText}>- Today</Text></View>
             <View style = {styles.row}><View style = {[ styles.keyIcon, {backgroundColor:"rgb(100, 70, 255)"}]}></View><Text style = {styles.keysText}>- Holiday</Text></View>
-            <View style = {styles.row}><View style = {[ styles.keyIcon, {backgroundColor:"red"}]}></View><Text style = {styles.keysText}>- Gym Closed</Text></View>
+            <View style = {styles.row}><View style = {[ styles.keyIcon, {backgroundColor:"red"}]}></View><Text style = {styles.keysText}>- No Events</Text></View>
         </View>
     )
     return(
