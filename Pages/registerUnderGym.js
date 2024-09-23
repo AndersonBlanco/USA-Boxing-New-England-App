@@ -1,6 +1,5 @@
 import { Modal, View, Text, SafeAreaView, Button, Image, StyleSheet, TextInput, TouchableOpacity, TouchableHighll, ImageBackground, FlatList, SectionList, ScrollView, AccessibilityInfo} from "react-native"; 
 import IconSVG from "../assets/icon_svg";
-import Icon from "../assets/icon.png"; 
 import MagnifyingGlassnent
  from "../assets/magnifying_glass_svg";
 import {database} from "../services/firebase";
@@ -117,8 +116,7 @@ export default function RegisterUnderGym({navigation, resources}){
         <SafeAreaView>
 
             <View style = {styles.cont}>
- 
-                <Image source = {Icon} style = {{height: 150,width: 150}}/>
+                <IconSVG height = {styles.icon.height}/>
             <Text style = {styles.topText}>Search your gym and enter the gym’s admission code</Text>
 
             {SearchBar}
@@ -144,7 +142,7 @@ export default function RegisterUnderGym({navigation, resources}){
                     style={styles.modal}
                 >
                     <View style = {styles.gymProfile}>
-                    <Image source = {Icon} style={{height: 90, width: 90}} />
+                    <Image source = {{uri: userSelectedGym.img}} height={100} width={100} />
         <Text>{((userSelectedGym)).name}</Text>
                     </View>
   

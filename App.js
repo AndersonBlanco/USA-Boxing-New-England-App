@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         position:"relative",
         right:"-82%",
-    
+        backgroundColor:"red"
       
         
     },

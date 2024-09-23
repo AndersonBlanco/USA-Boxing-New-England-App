@@ -5,8 +5,8 @@ import UserLoc from "../assets/userLoc";
 import CellIcon from "../assets/cell";
 import EmailIcon from "../assets/email";
 import { useState } from "react";
-import ProfileImgPng from "../assets/prof.png"
-import ProfileImgPng_2 from "../assets/prof.png"; 
+import ProfileImgPng from "../assets/client_profile_img.png"
+import ProfileImgPng_2 from "../assets/client_profile_img_1.png"; 
 import ExclamationIcon  from "../assets/exclamation";
 //user object schema:
 /*
@@ -58,7 +58,11 @@ export default function Profile(){
                 <View style = {styles.row_t1}><EmailIcon style={styles.userlocIcon}/><Text>{pseudoUserProfileOBJ.email}</Text></View>
             </View>
 
-            
+            <View style = {styles.profileDataCont}>
+                <View style = {styles.row_t2}><Text>Age: </Text><Text>{pseudoUserProfileOBJ.age}</Text></View>
+                <View style = {styles.row_t2}><Text>Weight: </Text><Text>{pseudoUserProfileOBJ.weight}</Text></View>
+                <View style = {styles.row_t2}><Text>Class: </Text><Text>{pseudoUserProfileOBJ.class}</Text></View>
+            </View>
 
             <Modal visible={usrProfileEditModal} style={styles.modal} transparent={true} animationType="fade">
             <View style = {styles.modalContOuter}>
