@@ -1,6 +1,6 @@
 # New England Mock App 
 
-<div style = "text-align:center; align-items:center; justify-conent:center;">
+<div style = "text-align:center; align-items:center; justify-conent:center; display: flex; flex-direction:row;">
 <img 
   width = "100px" 
   height = "100px" 
